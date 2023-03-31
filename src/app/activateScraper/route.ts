@@ -7,11 +7,36 @@ export async function GET(request: Request) {
   });
 }
 
-type Body = {
-  search: string;
-};
+export async function POST(req: Request, res: Response) {
+  const { search } = await req.json();
+  if (!search) return new Response("Search is required!", { status: 400 });
 
-export async function POST(req: NextApiRequest) {
-  console.log(req.body);
-  const search = req.body.search;
+  const response = await fetch(
+    `https://api.brightdata.com/dca/trigger?collector=c_lfvkcu202gz31xwzg4&queue_next=1`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.BRIGHTDATA_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        search,
+      }),
+    }
+  );
+
+  const data = await response.json();
+
+  console.log("data", data);
+  const { collection_id, start_eta } = data;
+
+  return new Response(
+    JSON.stringify({
+      collection_id,
+      start_eta,
+    }),
+    {
+      status: 200,
+    }
+  );
 }
