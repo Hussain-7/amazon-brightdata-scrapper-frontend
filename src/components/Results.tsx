@@ -8,7 +8,7 @@ type Props = {
 
 const Results = ({ results }: Props) => {
   return (
-    <div className="grid lg:grid-cols-2 xl:grid-cols-3 2xL:grid-cols-5 gap-5 w-full">
+    <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5 w-full">
       {results.map((result) => (
         <Link
           href={result.url}
