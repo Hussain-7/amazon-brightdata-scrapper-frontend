@@ -28,7 +28,7 @@ const Results = ({ results }: Props) => {
           </div>
           <div className="flex space-x-2 justify-end flex-1">
             <p className="font-bold text-indigo-500 pt-2 text-xl mt-auto">
-              {result.price > 0 ? `${result.price}` : "N/A"}
+              {result.price > 0 ? `$${result.price}` : "N/A"}
             </p>
             {result.previous_price > 0 && (
               <p className="font-bold text-indigo-500/50 line-through pt-2 text-xl mt-auto">

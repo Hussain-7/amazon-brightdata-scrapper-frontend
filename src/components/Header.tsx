@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <header>
       <form
-        className="flex items-center justify-center rounded-full py-2 px-4 bg-indigo-100 max-w-md mx-auto"
+        className="flex items-center justify-center rounded-full py-2 px-4 bg-indigo-100 max-w-2xl mx-auto"
         onSubmit={handleSearch}
       >
         <input

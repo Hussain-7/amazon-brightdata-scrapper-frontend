@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex bg-[#F7FBFF] h-screen">
         <Sidebar />
-        <main className="p-2 sm:p-10 max-w-7xl w-full mx-auto overflow-y-auto ">
+        <main className="p-2 pt-10 sm:p-10 max-w-5xl w-full mx-auto overflow-y-auto ">
           {/* Header */}
           <Header />
           {children}
