@@ -27,8 +27,6 @@ export async function POST(req: Request) {
         }),
       }
     );
-    console.log("response", response);
-
     const data = await response.json();
 
     console.log("data", data);
@@ -39,7 +37,7 @@ export async function POST(req: Request) {
       search,
       start_eta,
       status: "pending",
-      updatedAt: admin.firestore.Timestamp.now(),
+      updatedAt: start_eta,
     });
     return new Response(
       JSON.stringify({
