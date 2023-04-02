@@ -11,7 +11,11 @@ const Sidebar = () => {
     query(collection(db, "searches"), orderBy("start_eta", "desc"))
   );
   return (
-    <div className="p-2 md:p-10 py-6 overflow-y-auto border-b border-indigo-500/30">
+    <div
+      className="p-2 md:p-10 py-6 overflow-y-auto border-b border-indigo-500/30
+    scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thumb-rounded-full
+    "
+    >
       <div className="flex flex-col items-center justify-center mb-10">
         <DocumentMagnifyingGlassIcon className="h-16 md:w-16 text-indigo-600" />
         <h1 className="hidden md:inline text-center text-3xl my-2 font-bold">

@@ -3,7 +3,7 @@
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, FormEventHandler, useRef } from "react";
-
+import { toast } from "react-hot-toast";
 const Header = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -11,6 +11,7 @@ const Header = () => {
     e.preventDefault();
     const inputValue = inputRef.current?.value;
     if (!inputValue) return;
+    const notification = toast.loading(`Starting a Scraper for: ${inputValue}`);
     if (inputValue) {
       inputRef.current!.value = "";
     }
@@ -24,8 +25,15 @@ const Header = () => {
         body: JSON.stringify({ search: inputValue }),
       });
       const { collection_id, start_eta } = await response.json();
+      toast.success(`Scraper Started Successfully!`, {
+        id: notification,
+      });
       router.push(`/search/${collection_id}`);
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Whoops... Something Went Wrong!", {
+        id: notification,
+      });
+    }
     // Wait for the response to come back
   };
   return (
